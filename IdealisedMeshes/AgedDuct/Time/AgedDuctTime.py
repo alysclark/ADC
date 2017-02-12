@@ -353,14 +353,15 @@ fields.Finalise()
 # Get the field values for the first time step
 iron.FieldParameterSetTypes.current_field
 
-# Initialise previous field
+# Set time-dependent parameters
 previous_field = []
-
-condition == 'False'
+step = 0
+condition = 'False'
 
 while condition == 'False' or previous_field == []:
     start_time += 1
     end_time += 1
+    step += 1
 
     previous_field = current_field
 
@@ -383,7 +384,9 @@ while condition == 'False' or previous_field == []:
     # Compare the field values in the current step with those in the previous step to see if you have reached a steady state
     for idx in len(current_field):
         if current_field(idx) - previous_field(idx) <= 1.0E-4
-            condition = 'False'
+            condition = 'True'
             break
 
 iron.Finalise()
+
+print "Number of time steps: ", step
