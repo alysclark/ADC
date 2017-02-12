@@ -1,3 +1,5 @@
+# import pdb; pdb.set_trace()
+
 # Add Python bindings directory to PATH
 import sys, os
 
@@ -212,20 +214,16 @@ fields.NodesExport("SimplexTimeResults","FORTRAN")
 fields.ElementsExport("SimplexTimeResults","FORTRAN")
 fields.Finalise()
 
-# Get the field values for the first time step
-iron.FieldParameterSetTypes.current_field
+print "End of first time loop"
 
 # Set time-dependent parameters
-previous_field = []
-step = 0
+number_of_steps = 0
 condition = 'False'
 
-while condition == 'False' or previous_field == []:
+while condition == 'False':
     start_time += 1
     end_time += 1
-    step += 1
-
-    previous_field = current_field
+    number_of_steps += 1
 
     # Set the new time loop
     controlLoop.TimesSet(start_time, end_time, time_step)
@@ -241,14 +239,20 @@ while condition == 'False' or previous_field == []:
     fields.Finalise()
 
     # Get the current field values
-    iron.FieldParameterSetTypes.current_field
+    current_field = iron.FieldParameterSetTypes.VALUES
+
+    # Get the previous field values
+    previous_field = iron.FieldParameterSetTypes.PREVIOUS_VALUES
+
+    print 'The start time is:', start_time, 'and the end time is:', end_time
+    print 'The current field value is:', current_field, 'and the previous field value is:', previous_field
 
     # Compare the field values in the current step with those in the previous step to see if you have reached a steady state
-    for idx in len(current_field):
-        if current_field(idx) - previous_field(idx) <= 1.0E-4
-            condition = 'True'
-            break
+    # for idx in len(current_field):
+    if abs(current_field - previous_field) <= 1.0E-4:
+        condition = 'True'
+        break
 
 iron.Finalise()
 
-print "Number of time steps: ", step
+print "Number of time steps: ", number_of_steps

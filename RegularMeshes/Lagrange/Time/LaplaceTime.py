@@ -228,7 +228,7 @@ while condition == 'False' or previous_field == []:
 
     # Compare the field values in the current step with those in the previous step to see if you have reached a steady state
     for idx in len(current_field):
-        if current_field(idx) - previous_field(idx) <= 1.0E-4
+        if current_field(idx) - previous_field(idx) <= 1.0E-4:
             condition = 'False'
             break
 
