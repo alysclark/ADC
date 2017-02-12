@@ -361,6 +361,7 @@ condition = 'False'
 while condition == 'False' or previous_field == []:
     start_time += 1
     end_time += 1
+    step += 1
 
     previous_field = current_field
 
