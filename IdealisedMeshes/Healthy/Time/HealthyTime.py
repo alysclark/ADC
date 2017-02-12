@@ -353,14 +353,15 @@ fields.Finalise()
 # Get the field values for the first time step
 iron.FieldParameterSetTypes.current_field
 
-# Initialise previous field
+# Set time-dependent parameters
 previous_field = []
-
-condition == 'False'
+step = 0
+condition = 'False'
 
 while condition == 'False' or previous_field == []:
     start_time += 1
     end_time += 1
+    step += 1
 
     previous_field = current_field
 
@@ -387,3 +388,5 @@ while condition == 'False' or previous_field == []:
             break
 
 iron.Finalise()
+
+print "Number of time steps: ", step
