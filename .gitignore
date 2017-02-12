@@ -87,3 +87,11 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# OpenCMISS files
+*.connectivity
+*.node
+*.xml
+*.exelem
+*.exnode
+*.iml
