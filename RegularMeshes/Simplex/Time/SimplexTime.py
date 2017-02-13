@@ -1,7 +1,7 @@
 # import pdb; pdb.set_trace()
 
 # Add Python bindings directory to PATH
-import sys, os
+import sys, os, numpy
 
 # Initialise OpenCMISS-Iron
 from opencmiss.iron import iron
@@ -14,7 +14,7 @@ diff_coeff = 0.225 # from readings
 initial_conc = 0.5
 start_time = 0.0
 end_time = 1.0
-time_step = 0.01
+time_step = 1
 screen_output_freq = 2 # how many time steps between outputs to screen
 
 (coordinateSystemUserNumber,
@@ -159,12 +159,12 @@ problem.ControlLoopCreateFinish()
 dynamicSolver = iron.Solver()
 problem.SolversCreateStart()
 problem.SolverGet([iron.ControlLoopIdentifiers.NODE], 1, dynamicSolver)
-dynamicSolver.outputType = iron.SolverOutputTypes.PROGRESS
+dynamicSolver.outputType = iron.SolverOutputTypes.NONE
 linearSolver = iron.Solver()
 dynamicSolver.DynamicLinearSolverGet(linearSolver)
 linearSolver.outputType = iron.SolverOutputTypes.NONE
-linearSolver.linearType = iron.LinearSolverTypes.ITERATIVE
-linearSolver.LinearIterativeMaximumIterationsSet(1000)
+linearSolver.linearType = iron.LinearSolverTypes.DIRECT
+#linearSolver.LinearIterativeMaximumIterationsSet(1000)
 problem.SolversCreateFinish()
 
 # Create solver equations and add equations set to solver equations
@@ -218,18 +218,56 @@ print "End of first time loop"
 
 # Set time-dependent parameters
 number_of_steps = 0
-condition = 'False'
+tolerance_met = 0
 
-while condition == 'False':
-    start_time += 1
-    end_time += 1
+current_field_array = numpy.empty((0, 1), float)
+previous_field_array = numpy.empty((0, 1), float)
+
+
+
+controlLoop.TimesSet(0, 1, 1)
+problem.Solve()
+
+controlLoop.TimesSet(0, 1, 1)
+problem.Solve()
+
+controlLoop.TimesSet(1, 2, 1)
+problem.Solve()
+
+
+
+
+while tolerance_met == 0:
+    # start_time += 1
+    # end_time += 1
     number_of_steps += 1
 
     # Set the new time loop
-    controlLoop.TimesSet(start_time, end_time, time_step)
+    print 'start_time: ', start_time
+    print 'end_time: ', end_time
+    print 'time_step: ', 1/end_time
+
+    dependentField.ComponentValuesInitialiseDP(iron.FieldVariableTypes.U,iron.FieldParameterSetTypes.PREVIOUS_VALUES,1,initial_conc)
+
+    dependentField.ComponentValuesInitialiseDP(iron.FieldVariableTypes.U,iron.FieldParameterSetTypes.VALUES,1,initial_conc)
+
+    for node_num in range(1, lastNodeNumber+1):
+        # Get the current field values
+        previous_field_array = numpy.append(previous_field_array, dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES, 1, 1, node_num, 1))
+
+
+    controlLoop.TimesSet(start_time, end_time, 1/end_time)
 
     # Solve the problem using the new time loop
     problem.Solve()
+
+    for node_num in range(1, lastNodeNumber + 1):
+        # Get the current field values
+        current_field_array = numpy.append(current_field_array,
+                                           dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+                                                                                iron.FieldParameterSetTypes.VALUES, 1,
+                                                                                1, node_num, 1))
+    print current_field_array
 
     # Export results
     fields = iron.Fields()
@@ -238,21 +276,24 @@ while condition == 'False':
     fields.ElementsExport("SimplexTimeResults", "FORTRAN")
     fields.Finalise()
 
-    # Get the current field values
-    current_field = iron.FieldParameterSetTypes.VALUES
+    print 'Number of time steps: ', number_of_steps
 
-    # Get the previous field values
-    previous_field = iron.FieldParameterSetTypes.PREVIOUS_VALUES
+    # for node_num in range(1, lastNodeNumber+1):
+    #     # Get the current field values
+    #     current_field_array = numpy.append(current_field_array, dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES, 1, 1, node_num, 1))
+    #
+    #     # Get the previous field values
+    #     previous_field_array = numpy.append(previous_field_array, dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.PREVIOUS_VALUES, 1, 1, node_num, 1))
+    # import pdb; pdb.set_trace()
 
-    print 'The start time is:', start_time, 'and the end time is:', end_time
-    print 'The current field value is:', current_field, 'and the previous field value is:', previous_field
+    print max(abs(current_field_array - previous_field_array))
+    print current_field_array[50]
+    print previous_field_array[50]
 
-    # Compare the field values in the current step with those in the previous step to see if you have reached a steady state
-    # for idx in len(current_field):
-    if abs(current_field - previous_field) <= 1.0E-4:
-        condition = 'True'
-        break
+
+    if numpy.allclose(current_field_array, previous_field_array, atol=1E-04):
+        tolerance_met = 1
 
 iron.Finalise()
 
-print "Number of time steps: ", number_of_steps
+print "Total number of time steps: ", number_of_steps

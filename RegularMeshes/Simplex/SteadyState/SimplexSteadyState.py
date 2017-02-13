@@ -179,4 +179,7 @@ fields.NodesExport("SimplexSteadyStateResults","FORTRAN")
 fields.ElementsExport("SimplexSteadyStateResults","FORTRAN")
 fields.Finalise()
 
+for node_num in range(1, totalNumberOfNodes):
+    print current_field_array = numpy.append(current_field_array, dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES, 1, 1, node_num, 1))
+
 iron.Finalise()
