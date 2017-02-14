@@ -1,5 +1,5 @@
 # Add Python bindings directory to PATH
-import sys, os
+import sys, os, numpy
 
 # Initialise OpenCMISS-Iron
 from opencmiss.iron import iron
@@ -179,7 +179,13 @@ fields.NodesExport("SimplexSteadyStateResults","FORTRAN")
 fields.ElementsExport("SimplexSteadyStateResults","FORTRAN")
 fields.Finalise()
 
-for node_num in range(1, totalNumberOfNodes):
-    print current_field_array = numpy.append(current_field_array, dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES, 1, 1, node_num, 1))
+current_field_array = numpy.zeros(216)
+
+for node_num in range(1, lastNodeNumber + 1):
+    current_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+                                                                               iron.FieldParameterSetTypes.VALUES, 1, 1,
+                                                                               node_num, 1)
+
+print 'The concentration field at steady state is:\n', current_field_array
 
 iron.Finalise()
