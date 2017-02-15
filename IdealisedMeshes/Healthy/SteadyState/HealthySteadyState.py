@@ -322,6 +322,17 @@ problem.Solve()
 print 'Width of acinus duct is ', width_inlet
 print 'Width of outlet is ', width_outlet
 
+current_field_array = numpy.zeros(len(node_array))
+
+# Get the field values
+for idx, node_num in enumerate(node_array):
+    current_field_array[idx] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+                                                                               iron.FieldParameterSetTypes.VALUES,
+                                                                               1, 1,
+                                                                               int(node_num), 1)
+
+print 'The field array for steady state is:\n', current_field_array
+
 # Export results as fml files for the geometric field and the dependent field (.geometric and .phi respectively). Outputs a .xml file.
 baseName = "laplace"
 dataFormat = "PLAIN_TEXT"
