@@ -220,6 +220,8 @@ while tolerance_met == 0:
                                                                                        1, 1,
                                                                                        node_num, 1)
 
+    controlLoop.TimesSet(start_time, end_time, time_step)
+
     # Solve the problem using the new time loop
     problem.Solve()
 
