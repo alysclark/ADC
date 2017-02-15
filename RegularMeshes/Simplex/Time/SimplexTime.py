@@ -214,7 +214,6 @@ while tolerance_met == 0:
 
     # Get the previous field values
     if number_of_steps != 1:
-        # previous_field_array = current_field_array
         for node_num in range(1, lastNodeNumber + 1):
             previous_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
                                                                                        iron.FieldParameterSetTypes.PREVIOUS_VALUES,
@@ -235,22 +234,22 @@ while tolerance_met == 0:
 
     difference = max(abs(current_field_array - previous_field_array))
     # tolerance = min((1E-02 + 1E-01 * max(abs(current_field_array))), (1E-04 + 1E-04 * max(abs(previous_field_array))))
-    tolerance = 1E-04
+    tolerance = 1E-03
 
     print '\nThe maximum difference between the current and previous field is:', difference
 
     print '\nThe tolerance to meet is:', tolerance
 
+    # Export results
+    fields = iron.Fields()
+    fields.CreateRegion(region)
+    fields.NodesExport("SimplexTimeResults", "FORTRAN")
+    fields.ElementsExport("SimplexTimeResults", "FORTRAN")
+    fields.Finalise()
+
     if number_of_steps != 1:
         if difference <= tolerance:
             tolerance_met = 1
-
-# Export results
-fields = iron.Fields()
-fields.CreateRegion(region)
-fields.NodesExport("SimplexTimeResults", "FORTRAN")
-fields.ElementsExport("SimplexTimeResults", "FORTRAN")
-fields.Finalise()
 
 print "Total number of iterations: ", number_of_steps
 
