@@ -92,7 +92,9 @@ ENV/
 *.connectivity
 *.node
 *.xml
-*.exelem
-*.exnode
+#.exelem
+#*.exnode
 *.iml
 *.in
+*.pl
+#*.txt
