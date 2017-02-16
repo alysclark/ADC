@@ -113,8 +113,8 @@ from opencmiss.iron import iron
 diff_coeff = 22.5  # in mm^2/sec
 initial_conc = 0.001
 start_time = 0.0
-end_time = 0.1
-time_step = 0.005
+end_time = 0.012
+time_step = 0.0005
 screen_output_freq = 2  # how many time steps between outputs to screen
 
 (coordinateSystemUserNumber,
@@ -350,8 +350,8 @@ print 'The field array for end time', end_time, 'is:\n', current_field_array
 # Export results
 fields = iron.Fields()
 fields.CreateRegion(region)
-fields.NodesExport("SimplexTimeResults_0.1", "FORTRAN")
-fields.ElementsExport("SimplexTimeResults_0.1", "FORTRAN")
+fields.NodesExport("HealthyTimeOutletResults_0.012", "FORTRAN")
+fields.ElementsExport("HealthyTimeOutletResults_0.012", "FORTRAN")
 fields.Finalise()
 
 iron.Finalise()
