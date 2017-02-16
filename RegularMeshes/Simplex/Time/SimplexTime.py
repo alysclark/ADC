@@ -11,10 +11,10 @@ height = 0.1
 width = 0.2
 length = 0.3
 diff_coeff = 22.5  # in mm^2/sec
-initial_conc = 0.5
+initial_conc = 0.001
 start_time = 0.0
-end_time = 10000
-time_step = 10
+end_time = 1
+time_step = 0.05
 screen_output_freq = 2  # how many time steps between outputs to screen
 
 (coordinateSystemUserNumber,
@@ -195,64 +195,94 @@ if lastNodeDomain == computationalNodeNumber:
                                iron.BoundaryConditionsTypes.FIXED, 1.0)
 solverEquations.BoundaryConditionsCreateFinish()
 
-# While loop solving at different time steps
-current_field_array = numpy.zeros(216)
-previous_field_array = numpy.zeros(216)
+# Manually generating the field values in one single control loop
+current_field_array = numpy.zeros(lastNodeNumber)
 
-# Set time-dependent parameters
-number_of_steps = 0
-tolerance_met = 0
+print 'Time step:', time_step
+print 'Start time:', start_time
+print 'End time:', end_time
 
-while tolerance_met == 0:
-    number_of_steps += 1
+controlLoop.TimesSet(start_time, end_time, time_step)
 
-    # Set the new time loop
-    print 'Control loop:', number_of_steps
-    print 'Time step:', time_step
-    print 'Start time:', start_time
-    print 'End time:', end_time
+# Solve the problem using the new time loop
+problem.Solve()
 
-    # Get the previous field values
-    if number_of_steps != 1:
-        for node_num in range(1, lastNodeNumber + 1):
-            previous_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
-                                                                                       iron.FieldParameterSetTypes.PREVIOUS_VALUES,
-                                                                                       1, 1,
-                                                                                       node_num, 1)
+# Get the field values
+for node_num in range(1, lastNodeNumber + 1):
+    current_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+                                                                               iron.FieldParameterSetTypes.VALUES,
+                                                                               1, 1,
+                                                                               int(node_num), 1)
 
-    controlLoop.TimesSet(start_time, end_time, time_step)
+print 'The field array for end time', end_time, 'is:\n', current_field_array
 
-    # Solve the problem using the new time loop
-    problem.Solve()
-
-    # Get the current field values
-    for node_num in range(1, lastNodeNumber + 1):
-        current_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
-                                                                                   iron.FieldParameterSetTypes.VALUES,
-                                                                                   1, 1,
-                                                                                   node_num, 1)
-
-    print 'The field array for loop', number_of_steps, 'is:\n', current_field_array
-
-    difference = max(abs(current_field_array - previous_field_array))
-    # tolerance = min((1E-02 + 1E-01 * max(abs(current_field_array))), (1E-04 + 1E-04 * max(abs(previous_field_array))))
-    tolerance = 1E-03
-
-    print '\nThe maximum difference between the current and previous field is:', difference
-
-    print '\nThe tolerance to meet is:', tolerance
-
-    # Export results
-    fields = iron.Fields()
-    fields.CreateRegion(region)
-    fields.NodesExport("SimplexTimeResults", "FORTRAN")
-    fields.ElementsExport("SimplexTimeResults", "FORTRAN")
-    fields.Finalise()
-
-    if number_of_steps != 1:
-        if difference <= tolerance:
-            tolerance_met = 1
-
-print "Total number of iterations: ", number_of_steps
+# Export results
+fields = iron.Fields()
+fields.CreateRegion(region)
+fields.NodesExport("SimplexTimeResults_1", "FORTRAN")
+fields.ElementsExport("SimplexTimeResults_1", "FORTRAN")
+fields.Finalise()
 
 iron.Finalise()
+
+# # While loop solving at different time steps
+# current_field_array = numpy.zeros(216)
+# previous_field_array = numpy.zeros(216)
+#
+# # Set time-dependent parameters
+# number_of_steps = 0
+# tolerance_met = 0
+#
+# while tolerance_met == 0:
+#     number_of_steps += 1
+#
+#     # Set the new time loop
+#     print 'Control loop:', number_of_steps
+#     print 'Time step:', time_step
+#     print 'Start time:', start_time
+#     print 'End time:', end_time
+#
+#     # Get the previous field values
+#     if number_of_steps != 1:
+#         for node_num in range(1, lastNodeNumber + 1):
+#             previous_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+#                                                                                        iron.FieldParameterSetTypes.PREVIOUS_VALUES,
+#                                                                                        1, 1,
+#                                                                                        node_num, 1)
+#
+#     controlLoop.TimesSet(start_time, end_time, time_step)
+#
+#     # Solve the problem using the new time loop
+#     problem.Solve()
+#
+#     # Get the current field values
+#     for node_num in range(1, lastNodeNumber + 1):
+#         current_field_array[(node_num) - 1] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+#                                                                                    iron.FieldParameterSetTypes.VALUES,
+#                                                                                    1, 1,
+#                                                                                    node_num, 1)
+#
+#     print 'The field array for loop', number_of_steps, 'is:\n', current_field_array
+#
+#     difference = max(abs(current_field_array - previous_field_array))
+#     # tolerance = min((1E-02 + 1E-01 * max(abs(current_field_array))), (1E-04 + 1E-04 * max(abs(previous_field_array))))
+#     tolerance = 1E-03
+#
+#     print '\nThe maximum difference between the current and previous field is:', difference
+#
+#     print '\nThe tolerance to meet is:', tolerance
+#
+#     # Export results
+#     fields = iron.Fields()
+#     fields.CreateRegion(region)
+#     fields.NodesExport("SimplexTimeResults", "FORTRAN")
+#     fields.ElementsExport("SimplexTimeResults", "FORTRAN")
+#     fields.Finalise()
+#
+#     if number_of_steps != 1:
+#         if difference <= tolerance:
+#             tolerance_met = 1
+#
+# print "Total number of iterations: ", number_of_steps
+#
+# iron.Finalise()
