@@ -1,3 +1,5 @@
+ #This file is just for checking whether the node numbering we see on cmgui lines up with what is used on meshing software, ANSYS
+
  Group name: monitor_points
  #Fields=1
  1) coordinates, coordinate, rectangular cartesian, #Components=3

@@ -1,0 +1,136 @@
+# Written by ICEM CFD 16.0, user kcla882, Mon Feb 13 09:50:53 NZDT 2017
+
+begin family WALLL
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 7598640 1
+        end bctype color
+    end solver "Nastran"
+end family WALLL
+
+begin family GEOM
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 16598300 1
+        end bctype color
+    end solver "Nastran"
+end family GEOM
+
+begin family INLET
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 16598300 1
+        end bctype color
+    end solver "Nastran"
+end family INLET
+
+begin family BODY
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 9560630 1
+        end bctype color
+    end solver "Nastran"
+end family BODY
+
+begin family OUTLET
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 3355440 1
+        end bctype color
+    end solver "Nastran"
+end family OUTLET
+
+begin family PART
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 7598640 1
+        end bctype color
+    end solver "Nastran"
+end family PART
+
+begin family ALV1
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 5597920 1
+        end bctype color
+    end solver "Nastran"
+end family ALV1
+
+begin family ALV2
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 3967990 1
+        end bctype color
+    end solver "Nastran"
+end family ALV2
+
+begin family ALV3
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 2929380 1
+        end bctype color
+    end solver "Nastran"
+end family ALV3
+
+begin family ALV5
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 11792900 1
+        end bctype color
+    end solver "Nastran"
+end family ALV5
+
+begin family ALV6
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 15116100 1
+        end bctype color
+    end solver "Nastran"
+end family ALV6
+
+begin family ALV7
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 14112500 1
+        end bctype color
+    end solver "Nastran"
+end family ALV7
+
+begin family ALV8
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 14569900 1
+        end bctype color
+    end solver "Nastran"
+end family ALV8
+
+begin family DUCT
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 10000500 1
+        end bctype color
+    end solver "Nastran"
+end family DUCT
+
+begin family INTEREST
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 254 1
+        end bctype color
+    end solver "Nastran"
+end family INTEREST

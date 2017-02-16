@@ -99,7 +99,7 @@ def read_ansys_mesh(mesh_dir, filename, nodes_subset=[], elem_subset=[], debug=F
 # Call the code which reads the ansys mesh
 [node_array, node_coordinates, element_array, element_nodes_array, inlet_node_array,
  outlet_node_array] = read_ansys_mesh(
-    './', 'project3Sever1EmphysemaIO.in.in')
+    './', 'project3Sever1EmphysemaIO.in')
 
 # Changing the values in each array to 32 bit integers
 node_array = node_array.astype(numpy.int32)
@@ -110,11 +110,11 @@ element_nodes_array = element_nodes_array.astype(numpy.int32)
 from opencmiss.iron import iron
 
 # Set problem parameters
-diff_coeff = 0.225  # from readings
-initial_conc = 0.5
+diff_coeff = 22.5  # from readings
+initial_conc = 0.001
 start_time = 0.0
-end_time = 1.0
-time_step = 0.01
+end_time = 0.002
+time_step = 0.0005
 screen_output_freq = 2  # how many time steps between outputs to screen
 
 (coordinateSystemUserNumber,
@@ -287,8 +287,6 @@ problem.CreateFinish()
 problem.ControlLoopCreateStart()
 controlLoop = iron.ControlLoop()
 problem.ControlLoopGet([iron.ControlLoopIdentifiers.NODE], controlLoop)
-controlLoop.TimesSet(start_time, end_time, time_step)
-controlLoop.OutputTypeSet(iron.ControlLoopOutputTypes.TIMING)
 controlLoop.TimeOutputSet(screen_output_freq)
 problem.ControlLoopCreateFinish()
 
@@ -296,12 +294,12 @@ problem.ControlLoopCreateFinish()
 dynamicSolver = iron.Solver()
 problem.SolversCreateStart()
 problem.SolverGet([iron.ControlLoopIdentifiers.NODE], 1, dynamicSolver)
-dynamicSolver.outputType = iron.SolverOutputTypes.PROGRESS
+dynamicSolver.outputType = iron.SolverOutputTypes.NONE
 linearSolver = iron.Solver()
 dynamicSolver.DynamicLinearSolverGet(linearSolver)
 linearSolver.outputType = iron.SolverOutputTypes.NONE
-linearSolver.linearType = iron.LinearSolverTypes.ITERATIVE
-linearSolver.LinearIterativeMaximumIterationsSet(1000)
+linearSolver.linearType = iron.LinearSolverTypes.DIRECT
+# linearSolver.LinearIterativeMaximumIterationsSet(1000)
 problem.SolversCreateFinish()
 
 # Create solver equations and add equations set to solver equations
@@ -328,65 +326,32 @@ for outlet_node in outlet_node_array:
 
 solverEquations.BoundaryConditionsCreateFinish()
 
-# Solve the problem
+# Manually generating the field values in one single control loop
+current_field_array = numpy.zeros(len(node_array))
+
+print 'Time step:', time_step
+print 'Start time:', start_time
+print 'End time:', end_time
+
+controlLoop.TimesSet(start_time, end_time, time_step)
+
+# Solve the problem using the new time loop
 problem.Solve()
 
-# Export results as fml files for the geometric field and the dependent field (.geometric and .phi respectively). Outputs a .xml file.
-baseName = "laplace"
-dataFormat = "PLAIN_TEXT"
-fml = iron.FieldMLIO()
-fml.OutputCreate(mesh, "", baseName, dataFormat)
-fml.OutputAddFieldNoType(baseName + ".geometric", dataFormat, geometricField,
-                         iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES)
-fml.OutputAddFieldNoType(baseName + ".phi", dataFormat, dependentField,
-                         iron.FieldVariableTypes.U, iron.FieldParameterSetTypes.VALUES)
-fml.OutputWrite("SevereEmphysemaTime.xml")
-fml.Finalise()
+# Get the field values
+for idx, node_num in enumerate(node_array):
+    current_field_array[idx] = dependentField.ParameterSetGetNodeDP(iron.FieldVariableTypes.U,
+                                                                               iron.FieldParameterSetTypes.VALUES,
+                                                                               1, 1,
+                                                                               int(node_num), 1)
+
+print 'The field array for end time', end_time, 'is:\n', current_field_array
 
 # Export results
 fields = iron.Fields()
 fields.CreateRegion(region)
-fields.NodesExport("SevereEmphysemaTimeResults", "FORTRAN")
-fields.ElementsExport("SevereEmphysemaTimeResults", "FORTRAN")
+fields.NodesExport("SevereEmphysemaTimeOutletResults_0.002", "FORTRAN")
+fields.ElementsExport("SevereEmphysemaTimeOutletResults_0.002", "FORTRAN")
 fields.Finalise()
 
-# Get the field values for the first time step
-iron.FieldParameterSetTypes.current_field
-
-# Set time-dependent parameters
-previous_field = []
-step = 0
-condition = 'False'
-
-while condition == 'False' or previous_field == []:
-    start_time += 1
-    end_time += 1
-    step += 1
-
-    previous_field = current_field
-
-    # Set the new time loop
-    controlLoop.TimesSet(start_time, end_time, time_step)
-
-    # Solve the problem using the new time loop
-    problem.Solve()
-
-    # Export results
-    fields = iron.Fields()
-    fields.CreateRegion(region)
-    fields.NodesExport("SevereEmphysemaTimeResults", "FORTRAN")
-    fields.ElementsExport("SevereEmphysemaTimeResults", "FORTRAN")
-    fields.Finalise()
-
-    # Get the current field values
-    iron.FieldParameterSetTypes.current_field
-
-    # Compare the field values in the current step with those in the previous step to see if you have reached a steady state
-    for idx in len(current_field):
-        if current_field(idx) - previous_field(idx) <= 1.0E-4
-            condition = 'True'
-            break
-
 iron.Finalise()
-
-print "Number of time steps: ", step

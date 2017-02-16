@@ -1,0 +1,23 @@
+# solver attribute file written for AI*Environment on Thu Feb 02 15:37:23 NZDT 2017
+## solver ANSYS
+begin family GEOM
+	begin solver Ansys
+	end solver Ansys
+end family GEOM
+begin family FLUID
+	begin solver Ansys
+	end solver Ansys
+end family FLUID
+begin family INLET
+	begin solver Ansys
+	end solver Ansys
+end family INLET
+begin family WALL
+	begin solver Ansys
+	end solver Ansys
+end family WALL
+begin family OUTLET
+	begin solver Ansys
+	end solver Ansys
+end family OUTLET
+

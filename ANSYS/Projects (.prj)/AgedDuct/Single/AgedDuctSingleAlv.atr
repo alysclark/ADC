@@ -1,0 +1,20 @@
+# Written by ICEM CFD 14.0, user hkmu551, Thu Feb 02 15:40:10 NZDT 2017
+
+begin family AGEDWITHDUCT.1
+    begin solver "Nastran"
+    end solver "Nastran"
+end family AGEDWITHDUCT.1
+
+begin family GEOM
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 16598300 1
+        end bctype color
+    end solver "Nastran"
+end family GEOM
+
+begin family CREATED_MATERIAL_3
+    begin solver "Nastran"
+    end solver "Nastran"
+end family CREATED_MATERIAL_3

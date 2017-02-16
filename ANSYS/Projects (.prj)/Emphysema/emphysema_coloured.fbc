@@ -1,0 +1,35 @@
+# family_boco file written by ICEM CFD by kcla882 on Mon Feb 13 09:58:31 NZDT 2017
+## solver Nastran
+"WALLL"
+"WALLL" "color" 7598640
+"GEOM"
+"GEOM" "color" 16598300
+"INLET"
+"INLET" "color" 16598300
+"BODY"
+"BODY" "color" 9560630
+"OUTLET"
+"OUTLET" "color" 3355440
+"PART"
+"PART" "color" 10000536
+"DUCT"
+"DUCT" "color" 10000536
+"ALV1"
+"ALV1" "color" 5728250
+"ALV2"
+"ALV2" "color" 2913770
+"ALV3"
+"ALV3" "color" 2936810
+"ALV4"
+"ALV4" "color" 3660150
+"ALV5"
+"ALV5" "color" 11266900
+"ALV6"
+"ALV6" "color" 15109400
+"ALV7"
+"ALV7" "color" 16076100
+"ALV8"
+"ALV8" "color" 12793500
+"INTEREST"
+"INTEREST" "color" 254
+

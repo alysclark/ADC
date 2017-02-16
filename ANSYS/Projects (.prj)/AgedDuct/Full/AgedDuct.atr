@@ -1,0 +1,42 @@
+# Written by ICEM CFD 14.0, user hkmu551, Thu Feb 02 15:37:23 NZDT 2017
+
+begin family WALL
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 15414100 1
+        end bctype color
+    end solver "Nastran"
+end family WALL
+
+begin family INLET
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 11678700 1
+        end bctype color
+    end solver "Nastran"
+end family INLET
+
+begin family FLUID
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 12043300 1
+        end bctype color
+    end solver "Nastran"
+end family FLUID
+
+begin family OUTLET
+    begin solver "Nastran"
+    end solver "Nastran"
+end family OUTLET
+
+begin family GEOM
+    begin solver "Nastran"
+        begin bctype color
+            active 1
+            color 16598300 1
+        end bctype color
+    end solver "Nastran"
+end family GEOM

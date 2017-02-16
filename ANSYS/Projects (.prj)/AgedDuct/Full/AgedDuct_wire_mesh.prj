@@ -1,0 +1,551 @@
+# ICEM CFD Project Settings
+# Saved by kcla882 on bioeng108.bioeng.auckland.ac.nz on Mon Feb 13 10:17:46 NZDT 2017
+# ICEM CFD - version 16.0 - Release date: Dec 03 2014
+
+array set file_name {
+    catia_dir .
+    parts_dir .
+    domain_loaded 1
+    cart_file_loaded 0
+    cart_file {}
+    domain_saved AgedDuct_wire_mesh.uns
+    archive {}
+    med_replay {}
+    topology_dir .
+    ugparts_dir .
+    icons {{$env(ICEM_ACN)/lib/ai_env/icons} {$env(ICEM_ACN)/lib/va/EZCAD/icons} {$env(ICEM_ACN)/lib/icons} {$env(ICEM_ACN)/lib/va/CABIN/icons}}
+    tetin AgedDuct_wire_mesh.tin
+    family_boco AgedDuct_wire_mesh.fbc
+    prism_params AgedDuct.prism_params
+    iges_dir .
+    solver_params_loaded 1
+    attributes_loaded 1
+    project_lock {}
+    attributes AgedDuct_wire_mesh.atr
+    domain AgedDuct_wire_mesh.uns
+    domains_dir .
+    settings_loaded 0
+    settings AgedDuct_wire_mesh.prj
+    blocking {}
+    hexa_replay {}
+    transfer_dir .
+    mesh_dir .
+    family_topo {}
+    gemsparts_dir .
+    family_boco_loaded 1
+    tetin_loaded 1
+    project_dir .
+    topo_mulcad_out {}
+    solver_params {}
+}
+array set options {
+    expert 1
+    remote_path {}
+    tree_disp_quad 2
+    tree_disp_pyra 0
+    evaluate_diagnostic 0
+    histo_show_default 1
+    select_toggle_corners 0
+    remove_all 0
+    keep_existing_file_names 0
+    record_journal 0
+    edit_wait 0
+    face_mode all
+    select_mode all
+    med_save_emergency_tetin 1
+    user_name kcla882
+    diag_which all
+    uns_warn_if_display 500000
+    bubble_delay 1000
+    external_num 1
+    tree_disp_tri 2
+    apply_all 0
+    default_solver {ANSYS CFX}
+    temporary_directory {}
+    flood_select_angle 0
+    home_after_load 1
+    project_active 0
+    histo_color_by_quality_default 1
+    undo_logging 1
+    tree_disp_hexa 0
+    histo_solid_default 1
+    host_name bioeng108.bioeng.auckland.ac.nz
+    xhidden_full 1
+    editor {}
+    mouse_color orange
+    clear_undo 1
+    remote_acn {}
+    remote_sh csh
+    tree_disp_penta 0
+    n_processors 1
+    remote_host {}
+    save_to_new 0
+    quality_info {{Volume change}}
+    tree_disp_node 0
+    med_save_emergency_mesh 1
+    redtext_color red
+    tree_disp_line 0
+    select_edge_mode 0
+    use_dlremote 0
+    max_mesh_map_size 1024
+    show_tris 1
+    remote_user {}
+    icon_size Normal
+    enable_idle 0
+    auto_save_views 1
+    max_cad_map_size 512
+    display_origin 0
+    uns_warn_user_if_display 1000000
+    detail_info 0
+    win_java_help 0
+    show_factor 1
+    boundary_mode all
+    clean_up_tmp_files 1
+    auto_fix_uncovered_faces 1
+    med_save_emergency_blocking 1
+    max_binary_tetin 0
+    tree_disp_tetra 0
+}
+array set disp_options {
+    uns_dualmesh 0
+    uns_warn_if_display 500000
+    uns_normals_colored 0
+    uns_icons 0
+    uns_locked_elements 0
+    uns_shrink_npos 0
+    uns_node_type None
+    uns_icons_normals_vol 0
+    uns_bcfield 0
+    backup Wire
+    uns_nodes 0
+    uns_only_edges 0
+    uns_surf_bounds 0
+    uns_wide_lines 0
+    uns_vol_bounds 0
+    uns_displ_orient Triad
+    uns_orientation 0
+    uns_directions 0
+    uns_thickness 0
+    uns_shell_diagnostic 0
+    uns_normals 0
+    uns_couplings 0
+    uns_periodicity 0
+    uns_single_surfaces 0
+    uns_midside_nodes 1
+    uns_shrink 100
+    uns_multiple_surfaces 0
+    uns_no_inner 0
+    uns_enums 0
+    uns_disp Wire
+    uns_bcfield_name {}
+    uns_color_by_quality 0
+    uns_changes 0
+    uns_cut_delay_count 1000
+}
+set icon_size1 24
+set icon_size2 35
+set thickness_defined 0
+set solver_type 1
+set solver_setup -1
+array set prism_values {
+    n_triangle_smoothing_steps 5
+    min_smoothing_steps 6
+    first_layer_smoothing_steps 1
+    new_volume {}
+    height 0
+    prism_height_limit 0
+    interpolate_heights 0
+    n_tetra_smoothing_steps 10
+    do_checks {}
+    delete_standalone 1
+    ortho_weight 0.50
+    max_aspect_ratio {}
+    ratio_max {}
+    total_height 0
+    use_prism_v10 0
+    intermediate_write 1
+    delete_base_triangles {}
+    ratio_multiplier {}
+    refine_prism_boundary 1
+    max_size_ratio {}
+    triangle_quality {}
+    max_prism_angle 180
+    tetra_smooth_limit 0.30000001
+    max_jump_factor 5
+    use_existing_quad_layers 0
+    layers 3
+    fillet 0.1
+    into_orphan 0
+    init_dir_from_prev {}
+    blayer_2d 0
+    do_not_allow_sticking {}
+    top_family {}
+    law exponential
+    min_smoothing_val 0.1
+    auto_reduction 0
+    max_prism_height_ratio 0
+    stop_columns 1
+    stair_step 1
+    smoothing_steps 12
+    side_family {}
+    min_prism_quality 0.0099999998
+    ratio 1.2
+}
+set aie_current_flavor {}
+array set vid_options {
+    wb_import_tritol 0.001
+    wb_import_mix_res_line 0
+    wb_import_cad_att_pre {SDFEA;DDM}
+    wb_import_surface_bodies 1
+    wb_NS_to_subset 0
+    wb_import_mat_points 0
+    auxiliary 0
+    wb_import_mix_res_surface 0
+    wb_import_mix_res -1
+    wb_import_cad_att_trans 1
+    show_name 0
+    wb_import_delete_solids 0
+    wb_import_solid_bodies 1
+    do_intersect_self_part 1
+    wb_import_save_pmdb {}
+    wb_import_mix_res_solid 0
+    inherit 1
+    default_part GEOM
+    new_srf_topo 1
+    wb_import_associativity_model_name {}
+    DelPerFlag 0
+    show_item_name 0
+    wb_import_save_partfile 0
+    wb_import_line_bodies 0
+    composite_tolerance 1.0
+    wb_import_en_sym_proc 1
+    wb_NS_to_entity_parts 0
+    wb_import_work_points 0
+    wb_import_sel_proc 1
+    wb_import_geom 1
+    wb_NS_only 0
+    wb_import_pluginname {}
+    wb_import_mix_res_point 0
+    wb_import_refresh_pmdb 0
+    wb_import_create_solids 0
+    wb_import_load_pmdb {}
+    wb_import_scale_geo 0
+    wb_import_sel_pre {}
+    replace 0
+    wb_import_cad_associativity 0
+    same_pnt_tol 1e-4
+    tdv_axes 1
+    wb_import_mesh 0
+    vid_mode 0
+    DelBlkPerFlag 0
+}
+array set map_tetin_sizes {
+    densities 1
+    msurfaces 1
+    ppoint 1
+    thincuts 1
+    tetin {}
+    psurfaces 1
+    mcurves 1
+    mpoint 1
+    doit 0
+    pcurves 1
+    global 1
+    subsets 1
+    family 1
+}
+array set import_model_options {
+    from_source 0
+    always_convert 0
+    named_sel_only 0
+    always_import 0
+    convert_to Unitless
+}
+set savedTreeVisibility {geomNode 0 geom_subsetNode 0 geomPointNode 0 geomCurveNode 0 geomSurfNode 0 geomBodyNode 0 geomDensityNode 0 meshNode 1 mesh_subsetNode 0 mesh_subset-added_faces 0 meshPointNode 0 meshLineNode 0 meshShellNode 0 meshTriNode 0 meshVolumeNode 2 meshTetraNode 2 partNode 1 part-FLUID 2 part-GEOM 2 part-INLET 0 part-OUTLET 0 part-WALL 2}
+set last_view {rot {-0.00213238811631 -0.997634694274 -0.0195628426307 -0.0658617102596} scale {489.118823399 489.118823399 489.118823399} center {0.403709 0.56703695 0.092168} pos {-63.0 4.0 0}}
+array set cut_info {
+    a 0
+    pgeom_cut__393288,cmd aie_cutplane_update_mesh
+    cur pgeom_cut__393288
+    b 0
+    xyz {0.29033394623547792 0.56703639402985573 0.092167854309082031}
+    c 1
+    binding,.v.f1.frame.p3.f0.frame.view,<MouseWheel> {bind .v.f1.frame.p3.f0.frame.view <MouseWheel> {aie_update_cutplane_wheelzoom .v.f1.frame.p3.f0.frame.view %D %X %Y}}
+    binding,.v.f1.frame.p3.f0.frame.view,<Button-5> {bind .v.f1.frame.p3.f0.frame.view <Button-5> {aie_update_cutplane_wheelzoom .v.f1.frame.p3.f0.frame.view -50}}
+    display_tsh 0
+    active 1
+    d 0.092167854309082031
+    pt1 {-0.024824878200888634 -0.023226134479045868 0.092167854309082031}
+    display 0
+    nx 0
+    pt2 {-0.024824878200888634 1.1572989225387573 0.092167854309082031}
+    pt3 {0.60549277067184448 -0.023226134479045868 0.092167854309082031}
+    ny 0
+    pt4 {0.60549277067184448 1.1572989225387573 0.092167854309082031}
+    px 0.29033394623547792
+    cutlist pgeom_cut__393288
+    nz 1
+    binding,.,<MouseWheel> {bind . <MouseWheel> {aie_update_cutplane_wheelzoom .v.f1.frame.p3.f0.frame.view %D %X %Y}}
+    an_val 0.5
+    py 0.56703639402985573
+    pz 0.092167854309082031
+    binding,.v.f1.frame.p3.f0.frame.view,<Button-4> {bind .v.f1.frame.p3.f0.frame.view <Button-4> {aie_update_cutplane_wheelzoom .v.f1.frame.p3.f0.frame.view 50}}
+    display_bd 0
+    display_n 0
+    pgeom_cut__393288,win .v.f1.frame.p3.f0.frame.view
+    display_color #fe22b9
+    mouse_wheel 1
+    display_transp 0.5
+    whole 1
+}
+array set hex_option {
+    default_bunching_ratio 2.0
+    floating_grid 0
+    project_to_topo 0
+    n_tetra_smoothing_steps 20
+    sketching_mode 0
+    trfDeg 1
+    wr_hexa7 0
+    smooth_ogrid 0
+    find_worst 1-3
+    hexa_verbose_mode 0
+    old_eparams 0
+    uns_face_mesh_method uniform_quad
+    multigrid_level 0
+    uns_face_mesh one_tri
+    check_blck 1
+    proj_limit 0
+    check_inv 0
+    project_bspline 0
+    hexa_update_mode 1
+    default_bunching_law BiGeometric
+}
+array set saved_views {
+    views {}
+}
+
+#------------- DEZ Data ------------------
+
+namespace eval ::AIEnv::GUIManagement::DEZ {
+    array set createSurfsDEZ_data {
+        this createSurfsDEZ
+        type param
+        PartList {"From screen" ALV1 ALV2 ALV3 ALV4 ALV5 ALV6 ALV7 ALV8 BODY DUCT GEOM INLET OUTLET PART WALLL}
+        __createSurfsFam_Last_Index 0
+        name srf.11
+        createSurfsEXGVal 7
+        createSurfSimpleMethodVal 0
+        curveList {}
+        createSrfTol 0.01
+        Simple4ptsList {}
+        curveDrivingList {}
+        curveDrivenList {}
+        createSurfSweepMethodVal 0
+        pntSweepVecList {{0 0 0} {1 0 0}}
+        curveSweepList {}
+        crvSweepDList {}
+        sangle 0
+        eangle 360
+        curveRevAxis {}
+        curveRevList {}
+        lofttol 0.1
+        loftsurfList {}
+        offsetdist 0
+        offsetSurfList {}
+        createSurfMidMethodVal 0
+        distance 0.008
+        how_modes {
+        Confirm
+        Present/Confirm
+        Quiet
+    }
+        mode Quiet
+        __createPartMidMode_Last_Index 0
+        partsurfList {}
+        keepFlag 0
+        DelUnattFlag 1
+        assemblyFlag 0
+        partialFlag 0
+        similarFlag 0
+        connectedFlag 0
+        __createSurfMidMode_Last_Index 0
+        midsurfList {}
+        midsurfList2 {}
+        modifyFacetSurf2EXGVal 1
+        crvSurfTrmSurfList {}
+        crvSurfTrmCurveList {crv.07 crv.06}
+        modSegmPlaneNormEGVal 0
+        SegPlanePntList {0.14850591482711 0.076841939073999 0.10427020700553}
+        segPlanenormal {0 0 1}
+        SegPlanePnt1 {}
+        SegPlanePnt2 {}
+        SegPlanePnt3 {}
+        modSurfKeepOldFlag 0
+        seg_angle 30
+        minSeg 1
+        modifyReapproxSurfVal 0
+        modSurfMergeList {}
+        reappSurfList {}
+        mtol1 0.1
+        reappSurf1List {}
+        reappCur1List {}
+        mtol2 0.1
+        reappSurf2List {}
+        mtol4 0.1
+        facetedonlyFlag3 0
+        how_modes1 {
+        Confirm
+        Quiet
+    }
+        mode1 Confirm
+        __reappEachSurfMode_Last_Index 0
+        reappEachSurfList {}
+        mtol3 0.1
+        facetedonlyFlag4 0
+        TrimSurfs {}
+        CurtSurfCurvList {}
+        CurtSurfSurfList {}
+        prTrFlag 0
+        createSurfExtMethodVal 2
+        ExtendCurve {}
+        ExtendSurf {}
+        extendlist {
+        "Closest"
+        "Tangential from edge"
+        "Tangential along U/V"
+    }
+        extend_method Closest
+        __createSurfaceExtendMethod_Last_Index 0
+        connect 1
+        ExtSrfAtEdgeSrf {}
+        ExtSrfAtEdgeEdgenum {}
+        ExtSrfAtEdgeDistance {}
+        absolute 0
+        midparts {}
+        proximity 0.016
+        __MPartsMethod_Last_Index 0
+        ext_image {}
+        ext_single {}
+        imagesize {}
+        shrinkWrapEGVal 0
+        minFeatSize {}
+        nSmooth 1
+        projFactor {}
+        c3dshrinkPart {}
+        __c3dshrinkPart_Last_Index 0
+        partFlag 0
+        VisGeomFlag 0
+        MakeGeomFlag 0
+        convexHullMethodEXGVal 0
+        convexHullSurList {}
+        convexCoarsenGGVal 1
+        convexTol 0.001
+        convexRemInterFaceFlag 0
+        convexHullSeparateFlag 1
+        convexCoarsenGG2Val 0
+        splitMethodGGVal 0
+        splitXDiv 2
+        splitYDiv 2
+        splitZDiv 2
+        convexCoarsenGG3Val 0
+        createStdShapeEGVal 0
+        stdBoxTypeEGVal 0
+        StdBoxSides {1 1 1}
+        boxAxPntList {0 0 0}
+        boxEntityList {}
+        xF 1
+        yF 1
+        zF 1
+        stdBoxAdjustBoundsVal 0
+        Xmin {}
+        Xmax {}
+        Ymin {}
+        Ymax {}
+        Zmin {}
+        Zmax {}
+        RadStdSphGGVal 0
+        radiusSph 1
+        stangleSph 0
+        enangleSph 180
+        StdSphereList {{0 0 0} {0 0 1}}
+        CylindRad1 1
+        CylindRad2 1
+        CylindBase1Flag 1
+        CylindBase2Flag 1
+        cylAxPntList {}
+        StdHoleSurfList {}
+        ReplaceHoleGGVal 0
+        StdHoleCrvList {}
+        StdHoleRad {}
+        StdHoleLocList {}
+        StdPlaneSide 1
+        TrimPlaneCurveList {}
+        StdPlaneCurveParam {}
+        StdPlaneRadius 1
+        TrimPlaneSurfList {}
+    }
+    array set deleteEntityDEZ_data {
+        this deleteEntityDEZ
+        type curve
+        entityList {}
+        DelUnattFlag 0
+    }
+    array set meshPrismDEZ_data {
+        this meshPrismDEZ
+        type DEZ
+        n_triangle_smoothing_steps 5
+        triangle_quality {}
+        __meshPrismTriQuality_Last_Index 0
+        n_tetra_smoothing_steps 10
+        smoothing_steps 12
+        first_layer_smoothing_steps 1
+        loadmesh 0
+    }
+    array set createPartDEZ_data {
+        this createPartDEZ
+        type surface
+        PartList {"From screen" ALV1 ALV2 ALV3 ALV4 ALV5 ALV6 ALV7 ALV8 DUCT FLUID GEOM INLET OUTLET PART WALL}
+        name INTEREST
+        __createPartName_Last_Index 0
+        createPartSelectVal 0
+        entityList {}
+        adjust_geo_names 0
+        location {}
+        select_geo_0d 0
+        select_geo_1d 1
+        select_geo_2d 1
+        select_geo_3d 1
+        minx 0.201925
+        miny -0.0232261
+        minz -0.246659
+        maxx 0.605493
+        maxy 1.1573
+        maxz 0.430995
+        BoxFlag 0
+        blocks {}
+    }
+    array set hardcopyDEZ_data {
+        this hardcopyDEZ
+        type DEZ
+        outfile aged_duct_wire_mesh
+        generate_new 0
+        format 5
+        ps_type PS
+        ps_color color
+        ps_frame 1
+        ps_title /people/kcla882
+        ps_label {ICEM CFD 16.0; kcla882@bioeng108.bioeng.auckland.ac.nz}
+        send_to_printer 0
+        invert 0
+        landscape 0
+        scale 1
+        jpeg_quality 100
+    }
+    array set cutPlaneDEZ_data {
+        this cutPlaneDEZ
+        type DEZ
+        cutPlaneMethod 1
+    }
+}
+set geo_cad(use_toptol_userset) 1
+set geo_cad(toler) 0.0007

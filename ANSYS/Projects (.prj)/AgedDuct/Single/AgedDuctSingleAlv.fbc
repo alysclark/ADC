@@ -1,0 +1,7 @@
+# family_boco file written by ICEM CFD by hkmu551 on Thu Feb 02 15:40:10 NZDT 2017
+## solver Nastran
+"AGEDWITHDUCT.1"
+"GEOM"
+"GEOM" "color" 16598300
+"CREATED_MATERIAL_3"
+

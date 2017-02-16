@@ -1,0 +1,1 @@
+Note the fine mesh is identical to the healthy mesh in every respect, except there are more nodes and elements. The mesh is more refined, hence it will take longer to solve as more iterations need to be performed.

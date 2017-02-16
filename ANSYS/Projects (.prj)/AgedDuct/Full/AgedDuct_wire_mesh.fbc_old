@@ -1,0 +1,11 @@
+# family_boco file written by ICEM CFD by kcla882 on Mon Feb 13 10:17:46 NZDT 2017
+## solver Nastran
+"WALL"
+"WALL" "color" 15414100
+"INLET"
+"INLET" "color" 11678700
+"FLUID"
+"FLUID" "color" 12043300
+"OUTLET"
+"GEOM"
+"GEOM" "color" 16598300

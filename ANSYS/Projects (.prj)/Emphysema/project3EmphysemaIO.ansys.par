@@ -1,0 +1,206 @@
+# solver params file written for AI*Environment on Wed Feb 01 15:56:46 NZDT 2017
+## solver ANSYS
+
+begin def_3_ST_2
+    inopr 0
+    real None
+    type 1186
+    begin kop186
+        kop1 -1
+        kop2 -1
+        kop3 -1
+        kop4 0
+        kop5 -1
+        kop6 0
+    end kop186
+end def_3_ST_2
+
+begin def_2_TH_1
+    inopr 0
+    real None
+    type 57
+    begin kop57
+        kop1 -1
+        kop2 0
+        kop3 -1
+        kop4 -1
+        kop5 -1
+        kop6 -1
+    end kop57
+end def_2_TH_1
+
+begin def_0_TH_3
+    inopr 0
+    real None
+    type 0
+    begin kop4
+        kop1 -1
+        kop2 -1
+        kop3 0
+        kop4 0
+        kop5 -1
+        kop6 -1
+    end kop4
+end def_0_TH_3
+
+begin ansys_product
+    coupled 0
+    exit_opt 0
+    exit_save SOLU
+    proc_n 1
+    save_opt 1
+    type1 ST
+    type2 TH
+    begin ST
+        AUTOTS -1
+        DELTIM 1.0
+        DELTIM1 0.0
+        DELTIM2 0.0
+        NLGEOM OFF
+        NSUBST 1
+        NSUBST1 0
+        NSUBST2 0
+        TIME 1.0
+        anal_type None
+        freq 0.0
+        freq2 1.0E+08
+        mod_ce 0
+        mod_expec 0
+        mod_n 10
+        mod_norm 0
+        mod_solv LANB
+        solv_mult 1.0
+        solv_tol 1.0E-08
+        solv_type NONE
+        timestep 0
+    end ST
+    begin TH
+        AUTOTS -1
+        DELTIM 1.0
+        DELTIM1 0.0
+        DELTIM2 0.0
+        NLGEOM OFF
+        NSUBST 1
+        NSUBST1 0
+        NSUBST2 0
+        TIME 1.0
+        anal_type None
+        solv_tol 1.0E-08
+        solv_type NONE
+        timestep 0
+    end TH
+end ansys_product
+
+begin def_2_ST_1
+    inopr 0
+    real None
+    type 181
+    begin kop181
+        kop1 -1
+        kop2 -1
+        kop3 0
+        kop4 -1
+        kop5 -1
+        kop6 -1
+    end kop181
+end def_2_ST_1
+
+begin def_0_ST_3
+    inopr 0
+    real None
+    type 0
+    begin kop21
+        kop1 0
+        kop2 0
+        kop3 0
+        kop4 -1
+        kop5 -1
+        kop6 -1
+    end kop21
+end def_0_ST_3
+
+begin def_2_ST_2
+    inopr 0
+    real None
+    type 93
+    begin kop93
+        kop1 -1
+        kop2 -1
+        kop3 -1
+        kop4 0
+        kop5 0
+        kop6 0
+    end kop93
+end def_2_ST_2
+
+begin global
+    ACEL 0
+    ACEL_XYZ {0 0 0}
+    DOMEGA 0
+    DOMEGA_XYZ {0 0 0}
+    OMEGA 0
+    OMEGA_SPIN 0
+    OMEGA_XYZ {0 0 0}
+end global
+
+begin icem_mesh
+    order 1
+end icem_mesh
+
+begin def_3_TH_1
+    inopr 0
+    real None
+    type 70
+    begin kop70
+        kop1 -1
+        kop2 0
+        kop3 -1
+        kop4 0
+        kop5 -1
+        kop6 -1
+    end kop70
+end def_3_TH_1
+
+begin def_3_TH_2
+    inopr 0
+    real None
+    type 1090
+    begin kop90
+        kop1 0
+        kop2 -1
+        kop3 -1
+        kop4 -1
+        kop5 -1
+        kop6 -1
+    end kop90
+end def_3_TH_2
+
+begin def_1_ST_1
+    inopr 0
+    real None
+    sec None
+    type 4
+    begin kop4
+        kop1 -1
+        kop2 0
+        kop3 -1
+        kop4 -1
+        kop5 -1
+        kop6 0
+    end kop4
+end def_1_ST_1
+
+begin def_3_ST_1
+    inopr 0
+    real None
+    type 185
+    begin kop185
+        kop1 -1
+        kop2 0
+        kop3 -1
+        kop4 0
+        kop5 -1
+        kop6 0
+    end kop185
+end def_3_ST_1
+
