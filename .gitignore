@@ -96,5 +96,5 @@ ENV/
 #*.exnode
 *.iml
 #*.in
-#s*.pl
+#*.pl
 #*.txt
